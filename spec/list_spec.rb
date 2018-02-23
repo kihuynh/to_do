@@ -2,6 +2,8 @@ require 'rspec'
 require 'pg'
 require 'list'
 
+# this will be initialize with an ID so we can add Tasks instances of List
+
 DB = PG.connect({:dbname => 'to_do_test'})
 
 RSpec.configure do |config|
@@ -25,7 +27,7 @@ describe(List) do
     end
   end
 
-  # 4
+  # 4 won't know what ID it will have. so just check if it's an integer instead
   describe('#id') do
     it("sets its ID when you save it") do
       list = List.new({:name => "Epicodus stuff", :id => nil})
