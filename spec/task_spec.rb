@@ -1,16 +1,10 @@
 require 'rspec'
 require 'pg'
 require 'task'
+require 'spec_helper'
 
 # require that TASK to belong to a list and initialized with an id
-# DB is a constant. Made available everywhere in the program. Use VERY rarely.
-DB = PG.connect({:dbname => 'to_do_test'})
 
-RSpec.configure do |config|
-  config.after(:each) do
-    DB.exec("DELETE FROM tasks *;")
-  end
-end
 
 describe(Task) do
   # 2
