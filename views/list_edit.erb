@@ -1,0 +1,17 @@
+<!-- Edit to update list name -->
+<h1>Update the <%=@list.name() %> list</h1>
+
+<form action="/lists/<%= @list.id() %>" method="post">
+  <input type="hidden" name="_method" value="patch">
+
+  <label for="name">Rename your list:</label>
+  <input id="name" name="name" type="text">
+
+  <button type="submit">Update</button>
+</form>
+<!-- input list allows acces to list id route from app rb -->
+<form action="/lists/<%= @list.id() %>" method="post">
+  <input name="_method" type="hidden" value="delete">
+  <button type="button">Delete list</button>
+
+</form>

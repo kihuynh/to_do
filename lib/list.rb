@@ -44,6 +44,17 @@ class List
     list_tasks
   end
 
+  def update(attributes)
+    @name = attributes.fetch(:name)
+    @id = self.id()
+    DB.exec("UPDATE lists SET name = '#{@name}' WHERE id = #{@id};")
+  end
+
+  def delete
+    DB.exec("DELETE FROM lists WHERE id = #{self.id()};")
+    DB.exec("DELETE FROM tasks WHERE list_id = #{self.id()};")
+  end
+
   def ==(another_list)
     self.name().==(another_list.name()).&(self.id().==(another_list.id()))
   end

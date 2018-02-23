@@ -6,7 +6,7 @@ require('./lib/list')
 require('pg')
 require('pry')
 
-DB = PG.connect({:dbname => 'to_do_test'})
+DB = PG.connect({:dbname => 'to_do'})
 
 # dat home
 get('/') do
@@ -18,16 +18,6 @@ get('/lists') do
   erb(:lists)
 end
 
-# route to view a specific list
-get('/lists/:id') do
-  @list = List.find(params.fetch("id").to_i())
-  erb(:list)
-end
-# dat list form page
-get('/lists/new') do
-  erb(:list_form)
-end
-
 # Fetch new list name from parameter. Create new list object with fetch info. id will remain nil until assigned by DB. Save list. Render success page
 post('/lists') do
   name = params.fetch("name")
@@ -36,6 +26,17 @@ post('/lists') do
   erb(:list_success)
 end
 
+# route to view a specific list
+get('/lists/:id') do
+  @list = List.find(params.fetch("id").to_i())
+  erb(:list)
+end
+# dat list form page
+# get('/lists/new') do
+#   erb(:list_form)
+# end
+
+
 post('/tasks') do
   description = params.fetch("description")
   list_id = params.fetch("list_id").to_i()
@@ -43,4 +44,16 @@ post('/tasks') do
   @task = Task.new({:description => description, :list_id => list_id})
   @task.save()
   erb(:task_success)
+end
+
+get('/lists/:id/edit') do
+  @list = List.find(params.fetch("id").to_i())
+  erb(:list_edit)
+end
+
+patch('/lists/:id') do
+  name = params.fetch("name")
+  @list = List.find(params.fetch("id").to_i())
+  @list.update({:name => name})
+  erb(:list)
 end
