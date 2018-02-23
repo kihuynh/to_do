@@ -12,6 +12,11 @@ end
 
 describe(List) do
 
+  describe('.all') do
+    it("it starts off with no lists") do
+      expect(List.all()).to(eq([]))
+    end
+  end
 
   # describe("#save") do
   #   it("lets you save lists to the database") do
@@ -21,6 +26,7 @@ describe(List) do
   #   end
   # end
 
+  # 1
   describe("#==") do
     it("is the same list if it has the same name") do
       list1 = List.new({:name => "Epicodus stuff", :id => nil})
