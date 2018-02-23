@@ -24,7 +24,7 @@ describe(List) do
     it("lets you save lists to the database") do
       list = List.new({:name => "Epicodus stuff", :id => nil})
       list.save()
-      expect(List.all()).to(eq[list])
+      expect(List.all()).to(eq([list]))
     end
   end
 
