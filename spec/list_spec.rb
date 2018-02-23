@@ -17,8 +17,22 @@ describe(List) do
       expect(List.all()).to(eq([]))
     end
   end
+  # 4 this spec will pass fairly easily because it's just looking for the same list.name. no worries about initializing
+  describe('#name') do
+    it("tells you its name") do
+      list = List.new({:name => "Epicodus stuff", :id => nil})
+      expect(list.name()).to(eq("Epicodus stuff"))
+    end
+  end
 
-
+  # 4
+  describe('#id') do
+    it("sets its ID when you save it") do
+      list = List.new({:name => "Epicodus stuff", :id => nil})
+      list.save()
+      expect(list.id).to(be_an_instance_of(Integer))
+    end
+  end
   # 3
   describe("#save") do
     it("lets you save lists to the database") do
