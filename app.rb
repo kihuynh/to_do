@@ -10,7 +10,7 @@ DB = PG.connect({:dbname => 'to_do'})
 
 # dat home
 get('/') do
-  erb(:home)
+  erb(:index)
 end
 
 get('/lists') do
@@ -56,4 +56,11 @@ patch('/lists/:id') do
   @list = List.find(params.fetch("id").to_i())
   @list.update({:name => name})
   erb(:list)
+end
+
+delete('/lists/:id') do
+  @list = List.find(params.fetch("id").to_i())
+  @list.delete()
+  @lists = List.all()
+  erb(:index)
 end

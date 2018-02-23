@@ -1,3 +1,4 @@
+<h1>Welcome to the To Do App.</h1>
 <h1>To Do</h1>
 <p>Create a new list:</p>
 
@@ -10,7 +11,7 @@
 <p>Add tasks to any list:</p>
 <!-- Select form -->
 <form action="/tasks" method="post">
-  <!-- <input id="list_id" name="list_id" type="hidden" value="<%= @list.id() %> "> -->
+
   <label for="list_id">Select a List</label>
   <select id='list_id' name='list_id' type='text'>
     <% @lists.each() do |list| %>
