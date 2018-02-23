@@ -11,20 +11,22 @@ RSpec.configure do |config|
 end
 
 describe(List) do
-
+  # 2
   describe('.all') do
     it("it starts off with no lists") do
       expect(List.all()).to(eq([]))
     end
   end
 
-  # describe("#save") do
-  #   it("lets you save lists to the database") do
-  #     list = List.new({:name => "Epicodus stuff", :id => nil})
-  #     list.save()
-  #     expect(List.all()).to(eq[list])
-  #   end
-  # end
+
+  # 3
+  describe("#save") do
+    it("lets you save lists to the database") do
+      list = List.new({:name => "Epicodus stuff", :id => nil})
+      list.save()
+      expect(List.all()).to(eq[list])
+    end
+  end
 
   # 1
   describe("#==") do

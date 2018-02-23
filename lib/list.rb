@@ -15,6 +15,7 @@ class List
     end
     lists
   end
+  
   # def save
   #   result = DB.exec("INSERT INTO lists (name) VALUES ('#{@name}') RETURNING id;")
   # end
